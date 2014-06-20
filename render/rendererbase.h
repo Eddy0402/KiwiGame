@@ -1,18 +1,15 @@
 #ifndef RENDERERBASE_H
 #define RENDERERBASE_H
 
-#include <QObject>
+#include <QPainter>
+#include "game/config.h"
+#include "game/game.h"
 
-class RendererBase : public QObject
+class RendererBase
 {
-    Q_OBJECT
 public:
-    explicit RendererBase(QObject *parent = 0);
-
-signals:
-
-public slots:
-
+    explicit RendererBase() {}
+    virtual void Render() = 0;
 };
 
 #endif // RENDERERBASE_H

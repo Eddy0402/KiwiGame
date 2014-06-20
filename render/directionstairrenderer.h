@@ -1,10 +1,15 @@
 #ifndef DIRECTIONSTAIRRENDERER_H
 #define DIRECTIONSTAIRRENDERER_H
 
-class DirectionStairRenderer : public RendererBase
-{
+#include "rendererbase.h"
+
+class DirectionStair;
+class DirectionStairRenderer : public RendererBase {
 public:
-    DirectionStairRenderer();
+    DirectionStairRenderer(DirectionStair *toDraw);
+    void Render();
+private:
+    DirectionStair *toDraw_;
 };
 
 #endif // DIRECTIONSTAIRRENDERER_H

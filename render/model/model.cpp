@@ -70,7 +70,7 @@ void Model::initScene(const aiScene *scene, const string &fileName)
     const string dir = getDir(fileName);
     for(unsigned i = 0;i < scene -> mNumMaterials;++i){
         const string textureFile = getTextureFile(scene,i,dir);
-        texture_.push_back( sTextureManager::Instance().texture(textureFile));
+        texture_.push_back( TextureManager::Instance().getResource(QString(textureFile.c_str())).data() );
     }
 }
 

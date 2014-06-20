@@ -1,18 +1,38 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <QWindow>
+#include <QtGui>
+#include <QOpenGLFunctions_4_3_Core>
+#include "loki/Singleton.h"
+#include "render/model/model.h"
 
 class Window : public QWindow
 {
     Q_OBJECT
+private:
+    Window(QScreen *parent = 0);
+    ~Window();
 public:
-    explicit Window(QWidget *parent = 0);
-
-signals:
-
+    QOpenGLFunctions_4_3_Core *func(){ return func_; }
+    Q_DISABLE_COPY(Window)
 public slots:
+    void update();
+signals:
+    void render();
+protected:
+    void exposeEvent(QExposeEvent *);
+    void resizeEvent(QResizeEvent *);
+private:
+    void initializeGL();
+    void paintGL();
+    QSurfaceFormat initFormat();
+    QOpenGLContext *context_;
+    QOpenGLFunctions_4_3_Core *func_;
 
+template<class T> friend class Loki::CreateUsingNew;
 };
+
+typedef Loki::SingletonHolder<Window,Loki::CreateUsingNew,Loki::NoDestroy> sWindow;
+#define GLfunc sWindow::Instance().func()
 
 #endif // WINDOW_H

@@ -22,7 +22,7 @@ private:
     std::string getTextureFile(const aiScene *scene,unsigned index,const std::string &dir);
 
     std::vector<Mesh> mesh_;
-    std::vector<std::shared_ptr<Texture>> texture_;
+    std::vector<Texture*> texture_;
     bool isValid;
 };
 

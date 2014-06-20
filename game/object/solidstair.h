@@ -1,16 +1,17 @@
 #ifndef CONCRETESTAIR_H
 #define CONCRETESTAIR_H
 
-class ConcreteStair : public StairBase
+#include "stairbase.h"
+#include "render/solidstairrenderer.h"
+
+class SolidStair : public StairBase
 {
-    Q_OBJECT
+friend class SolidStairRenderer;
 public:
-    explicit ConcreteStair(QObject *parent = 0);
-
-signals:
-
-public slots:
-
+    explicit SolidStair();
+    void Stand( Kiwi *kiwi );
+    virtual ~SolidStair(){}
 };
 
 #endif // CONCRETESTAIR_H
+

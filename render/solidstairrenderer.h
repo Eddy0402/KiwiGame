@@ -1,16 +1,16 @@
 #ifndef SOLIDSTAIRRENDERER_H
 #define SOLIDSTAIRRENDERER_H
 
+#include"rendererbase.h"
+
+class SolidStair;
 class SolidStairRenderer : public RendererBase
 {
-    Q_OBJECT
 public:
-    explicit SolidStairRenderer(QObject *parent = 0);
-
-signals:
-
-public slots:
-
+    explicit SolidStairRenderer(SolidStair *toDraw);
+    void Render();
+private:
+    SolidStair *toDraw_;
 };
 
 #endif // SOLIDSTAIRRENDERER_H

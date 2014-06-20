@@ -7,6 +7,13 @@ ResourceManager<T>::ResourceManager()
 
 }
 
+
+template<>
+ResourceManager<Texture>::ResourceManager()
+{
+
+}
+
 template<typename T>
 QWeakPointer<T> ResourceManager<T>::getResource(const QString &path)
 {

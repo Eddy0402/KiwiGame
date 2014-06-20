@@ -1,18 +1,20 @@
 #ifndef STAIRBASE_H
 #define STAIRBASE_H
 
-#include <QObject>
+#include "objectbase.h"
+#include "kiwi.h"
 
-class StairBase : public QObject
+class StairBase : public ObjectBase
 {
-    Q_OBJECT
 public:
-    explicit StairBase(QObject *parent = 0);
+    explicit StairBase(Point3D position,Velocity3D velocity,RendererBase *renderer);
+    virtual ~StairBase(){}
 
-signals:
+    void Update(float tickDuration);
+    virtual void Stand(Kiwi *kiwi) = 0;
+    bool OutOfBound();
 
-public slots:
-
+    static QSharedPointer<StairBase> NewStair();
 };
 
 #endif // STAIRBASE_H

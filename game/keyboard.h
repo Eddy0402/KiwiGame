@@ -2,17 +2,21 @@
 #define KEYBOARD_H
 
 #include <QObject>
+#include <QMap>
+#include <QKeyEvent>
 
-class Keyboard : public QObject
+class KeyBoard : public QObject
 {
     Q_OBJECT
 public:
-    explicit Keyboard(QObject *parent = 0);
-
-signals:
-
+    explicit KeyBoard(QObject *parent = 0);
 public slots:
-
+    void KeyUp(int key);
+    void KeyDown(int key);
+public:
+    bool getKeyState(int key);
+private:
+    QMap<int,bool> keyState_;
 };
 
 #endif // KEYBOARD_H

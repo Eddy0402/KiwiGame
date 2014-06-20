@@ -1,6 +1,6 @@
 #include "gamestatebase.h"
 
-GameStateBase::GameStateBase(QObject *parent) :
-    QObject(parent)
+GameStateBase::GameStateBase()
+    : QObject(0)
 {
 }
